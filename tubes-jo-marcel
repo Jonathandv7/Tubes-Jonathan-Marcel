@@ -1,1 +1,574 @@
-test
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
+//general 
+int number;
+char username[60];
+char password[60];
+char usertemp[60];
+char passtemp[60];
+int result;
+char ordername[99];
+
+//cpu 
+int cpunumber;
+int cpuchoice;
+int cpuchoice1;
+int cpuquantity;
+int cputotal;
+
+//gpu 
+int gpunumber;
+int gpuchoice;
+int gpuchoice1;
+int gpuquantity;
+int gputotal;
+
+//ram 
+int ramnumber;
+int ramchoice;
+int ramchoice1;
+int ramquantity;
+int ramtotal;
+
+//motherboard 
+int motherboardnumber;
+int motherboardchoice;
+int motherboardchoice1;
+int motherboardquantity;
+int motherboardtotal;
+
+//psu 
+int psunumber;
+int psuchoice;
+int psuchoice1;
+int psuquantity;
+int psutotal;
+
+//monitor variables
+int monitorangka;
+int monitorchoice;
+int monitorchoice1;
+int monitorquantity;
+int monitortotal;
+
+//PC_casing variables
+int PC_casingnumber;
+int PC_casingchoice;
+int PC_casingchoice1;
+int PC_casingquantity;
+int PC_casingtotal;
+
+//totalprice variables
+int grand_total;
+
+//endsystem variables
+int end_choice;
+
+//void functions
+void Login();
+void Register();
+void shopping();
+void cpu();
+void gpu();
+void ram();
+void motherboard();
+void psu();
+void monitor();
+void PC_casing();
+void totalprice();
+void endsystem();
+
+
+//main function
+int main(){
+
+   
+    printf("------------------------------------------------------------------------------\n");
+    printf("Halo, Silahkan pilih Login jika sudah memiliki akun dan register jika belum\n[1] Login\n[2] Register\n[3] Exit\n");
+    printf("Pilih Operasi: ");
+    scanf("%d", &number);
+    
+//switch case for number
+    switch(number){
+        case 1:
+            printf("-------------------------------------------\n");
+            printf("Mengarahkan ke halaman login\n");
+            Login();
+            break;
+        case 2:
+            printf("-------------------------------------------\n");
+            printf("Mengarahkan ke halaman registrasi \n");
+            Register();
+            break;
+        case 3:
+            printf("-------------------------------------------\n");
+            printf("Keluar dari sistem\n");
+            return 0;
+            break;
+    }
+    if(number >3){
+        printf("invalid\n");
+        main();
+    }
+}
+
+//login function
+void Login(){
+    printf("-------------------------------------------\n");
+    printf("Username: ");
+    scanf("%s", &usertemp);
+    
+    printf("Password: ");
+    scanf("%s", &passtemp);
+ 
+    if(strcmp(username,usertemp)==0){ 
+        if(strcmp(password,passtemp)==0){ 
+        printf("Selamat datang Login berhasil!\n\n\n");
+        shopping();
+        } else{
+            printf("password salah\n");
+            main();
+        }
+    } else{
+            printf("username salah\n");
+            main();
+    }
+}
+
+//register function
+void Register(){
+    printf("-------------------------------------------\n");
+    printf("Selamat Datang Di Halaman Registrasi\n");
+    printf("Username harus dalam karakter\n");
+    printf("Username: ");
+    scanf("%s", &username);
+    printf("Password harus dalam karakter atau angka\n");
+    printf("password: ");
+    scanf("%s", &password);
+    
+    result = strcmp(username, password);
+    
+    if(result == 0){
+        printf("username dan password tidak bisa sama\n");
+        return ;
+    } else{
+        printf("Registrasi Berhasil\n");
+        printf("username: %s \n", username);
+        printf("password: %s \n", password);
+        main();
+    }
+}
+
+//shopping function
+void shopping(){
+    printf("------------------------------------- \n");
+    printf("== TOKO GEMA JAYA == \n");
+    printf("------------------------------------- \n");
+
+    printf("Nama Customer: ");
+    scanf("%s", &ordername);
+    printf("Halo  %s\n", ordername);
+    cpu();
+}
+
+void cpu(){
+    printf("------------------------------------- \n");
+    printf("List CPU \n");
+    printf("Pilih CPU dibawah ini: \n");
+    printf("1. intel core i5-6500k : Rp. 2.500.000\n");
+    printf("2. intel core i7-6700k : Rp. 4.300.000\n");
+    printf("3. amd ryzen 5         : Rp. 2.900.000\n");
+    printf("4. Intel core pentium  : Rp. 1.600.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &cpuchoice);
+    printf("CPU yang dipilih = %d \n", cpuchoice);
+    
+    
+    if (cpuchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &cpuquantity);
+        cputotal = (cpuquantity * 2500000);
+        printf("\nHarga total untuk CPU : %d \n", cputotal);
+        gpu();
+    }
+    
+    if (cpuchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &cpuquantity);
+        cputotal = (cpuquantity * 4300000);
+        printf("\nHarga total untuk CPU: %d \n", cputotal);
+        gpu();
+    }
+    
+    if (cpuchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &cpuquantity);
+        cputotal = (cpuquantity * 2900000);
+        printf("\nHarga total untuk CPU: %d \n", cputotal);
+        gpu();
+    }
+    
+    if (cpuchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &cpuquantity);
+        cputotal = (cpuquantity * 1600000);
+        printf("\n Harga total untuk CPU: %d \n", cputotal);
+        gpu();
+    }
+    
+    if (cpuchoice > 4){
+        printf("invalid \n");
+        cpu();
+    }
+    
+}
+
+void gpu(){
+    
+    printf("------------------------------------- \n");
+    printf("List GPU\n");
+    printf("Pilih GPU di bawah ini: \n");
+    printf("1. MSI GTX 1650    : Rp. 5.200.000\n");
+    printf("2. MSI GTX 1050    : Rp. 3.700.000\n");
+    printf("3. PNY RTX 3060    : Rp. 12.800.000\n");
+    printf("4. Gigabyte RX 560 : Rp. 1.700.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &gpuchoice);
+    printf("Pilihan GPU = %d \n", gpuchoice);
+    
+    
+    if (gpuchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &gpuquantity);
+        gputotal = (gpuquantity * 5200000);
+        printf("\nTotal Harga GPU: %d \n", gputotal);
+        ram();
+    }
+    
+    if (gpuchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &gpuquantity);
+        gputotal = (gpuquantity * 3700000);
+        printf("\nTotal Harga GPU: %d \n", gputotal);
+        ram();
+    }
+    
+    if (gpuchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &gpuquantity);
+        gputotal = (gpuquantity * 12800000);
+        printf("\nTotal Harga GPU: %d \n", gputotal);
+        ram();
+    }
+    
+    if (gpuchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &gpuquantity);
+        gputotal = (gpuquantity * 1700000);
+        printf("\nTotal Harga GPU: %d \n", gputotal);
+        ram();
+    }
+    if (gpuchoice > 4){
+        printf("invalid \n");
+        gpu();
+    }
+    
+}
+
+void ram(){
+    
+    printf("------------------------------------- \n");
+    printf("List RAM\n");
+    printf("Pilih RAM di bawah ini: \n");
+    printf("1. Kingstom DDR4 3200Mhz 4GB : Rp. 200.000\n");
+    printf("2. Corsair DDR4 3200Mhz 8GB  : Rp. 600.000\n");
+    printf("3. Kingstom DDR3 1333Mhz 2GB : Rp. 72.000\n");
+    printf("4. Corsair DDR4 3200Mhz 32GB : Rp. 2.000.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &ramchoice);
+    printf("Pilihan RAM = %d \n", ramchoice);
+    
+    
+    if (ramchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &ramquantity);
+        ramtotal = (ramquantity * 200000);
+        printf("\nTotal Harga RAM: %d \n", ramtotal);
+        motherboard();
+    }
+    
+    if (ramchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &ramquantity);
+        ramtotal = (ramquantity * 600000);
+        printf("\nTotal Harga RAM: %d \n", ramtotal);
+        motherboard();
+    }
+    
+    if (ramchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &ramquantity);
+        ramtotal = (ramquantity * 72000);
+        printf("\nTotal Harga RAM: %d \n", ramtotal);
+        motherboard();
+    }
+    
+    if (ramchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &ramquantity);
+        ramtotal = (ramquantity * 2000000);
+        printf("\nTotal Harga RAM: %d \n", ramtotal);
+        motherboard();
+    }
+    
+    if (ramchoice > 4){
+        printf("invalid \n");
+        ram();
+    }
+}
+
+void motherboard(){
+
+    printf("------------------------------------- \n");
+    printf("List Motherboard\n");
+    printf("Pilih Motherboard di bawah ini: \n");
+    printf("1. ASUS h81m       : Rp. 750.000\n");
+    printf("2. MSI h110m       : Rp. 1.000.000\n");
+    printf("3. ASUS prime z270 : Rp. 2.300.000\n");
+    printf("4. MSI b250m       : Rp. 1.500.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &motherboardchoice);
+    printf("Pilihan Motherboard= %d \n", motherboardchoice);
+    
+    
+    if (motherboardchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &motherboardquantity);
+        motherboardtotal = (motherboardquantity * 750000);
+        printf("\nHarga total motherboard: %d \n", motherboardtotal);
+        psu();
+    }
+    
+    if (motherboardchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &motherboardquantity);
+        motherboardtotal = (motherboardquantity * 1000000);
+        printf("\nHarga total motherboard: %d \n", motherboardtotal);
+        psu();
+    }
+    
+    if (motherboardchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &motherboardquantity);
+        motherboardtotal = (motherboardquantity * 2300000);
+        printf("\nHarga total motherboard: %d \n", motherboardtotal);
+        psu();
+    }
+    
+    if (motherboardchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &motherboardquantity);
+        motherboardtotal = (motherboardquantity * 1500000);
+        printf("\nHarga total motherboard: %d \n", motherboardtotal);
+        psu();
+    }
+   
+    if (motherboardchoice > 4){
+        printf("invalid \n");
+        motherboard();
+    }
+}
+
+void psu(){
+    
+    printf("------------------------------------- \n");
+    printf("List PSU\n");
+    printf("Please choose the operation Below: \n");
+    printf("1. corsair 550W  : Rp. 780.000\n");
+    printf("2. corsair 1200W : Rp. 4.000.000\n");
+    printf("3. corsair 850W  : Rp. 1.600.000\n");
+    printf("4. corsair 750W  : Rp. 2.300.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &psuchoice);
+    printf("Pilihan PSU = %d \n", psuchoice);
+    
+    
+    if (psuchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &psuquantity);
+        psutotal = (psuquantity * 780000);
+        printf("\nTotal harga PSU: %d \n", psutotal);
+        monitor();
+    }
+    
+    if (psuchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &psuquantity);
+        psutotal = (psuquantity * 4000000);
+        printf("\nTotal harga PSU: %d \n", psutotal);
+        monitor();
+    }
+    
+    if (psuchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &psuquantity);
+        psutotal = (psuquantity * 1600000);
+        printf("\nTotal harga PSU: %d \n", psutotal);
+        monitor();
+    }
+    
+    if (psuchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &psuquantity);
+        psutotal = (psuquantity * 2300000);
+        printf("\nTotal harga PSU: %d \n", psutotal);
+        monitor();
+    }
+   
+    if (psuchoice > 4){
+        printf("invalid \n");
+        psu();
+    }
+}
+
+void monitor(){
+
+    printf("------------------------------------- \n");
+    printf("List Monitor\n");
+    printf("Pilih monitor dibawah ini: \n");
+    printf("1. LG 24MK430H        : Rp. 1.455.000\n");
+    printf("2. LG 16m38A          : Rp. 900.000\n");
+    printf("3. Samsung S22F355F   : Rp. 1.600.000\n");
+    printf("4. Samsung S24F350FHE : Rp. 2.150.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &monitorchoice);
+    printf("Pilihan Monitor = %d \n", monitorchoice);
+    
+    
+    if (monitorchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &monitorquantity);
+        monitortotal = (monitorquantity * 1455000);
+        printf("\nHarga total monitor: %d \n", monitortotal);
+        PC_casing();
+    }
+    
+    if (monitorchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &monitorquantity);
+        monitortotal = (monitorquantity * 900000);
+        printf("\nHarga total monitor: %d \n", monitortotal);
+        PC_casing();
+    }
+    
+    if (monitorchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &monitorquantity);
+        monitortotal = (monitorquantity * 1600000);
+        printf("\nHarga total monitor: %d \n", monitortotal);
+        PC_casing();
+    }
+    
+    if (monitorchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &monitorquantity);
+        monitortotal = (monitorquantity * 2150000);
+        printf("\nHarga total monitor: %d \n", monitortotal);
+        PC_casing();
+    }
+   
+    if (monitorchoice > 4){
+        printf("invalid \n");
+        monitor();
+    }
+}
+
+void PC_casing(){
+
+    printf("------------------------------------- \n");
+    printf("List Casing PC\n");
+    printf("Pilih casing pc dibawah ini: \n");
+    printf("1. cooler master masterbox        : Rp. 650.000\n");
+    printf("2. cooler master elite 311        : Rp. 55.000\n");
+    printf("3. cooler master mastercase 5 pro : Rp. 2.000.000\n");
+    printf("4. corsair carbide 600c           : Rp. 2.000.000\n");
+    printf("Pilihan: ");
+    scanf("%d", &PC_casingchoice);
+    printf("Pilihan casing pc = %d \n", PC_casingchoice);
+    
+    
+    if (PC_casingchoice == 1){
+        printf("Jumlah: ");
+        scanf("%d", &PC_casingquantity);
+        PC_casingtotal = (PC_casingquantity * 650000);
+        printf("\ntotal harga casing pc: %d \n", PC_casingtotal);
+        totalprice();
+    }
+    
+    if (PC_casingchoice == 2){
+        printf("Jumlah: ");
+        scanf("%d", &PC_casingquantity);
+        PC_casingtotal = (PC_casingquantity * 55000);
+        printf("\ntotal harga casing pc: %d \n", PC_casingtotal);
+        totalprice();
+    }
+    
+    if (PC_casingchoice == 3){
+        printf("Jumlah: ");
+        scanf("%d", &PC_casingquantity);
+        PC_casingtotal = (PC_casingquantity * 2000000);
+        printf("\ntotal harga casing pc: %d \n", PC_casingtotal);
+        totalprice();
+    }
+    
+    if (PC_casingchoice == 4){
+        printf("Jumlah: ");
+        scanf("%d", &PC_casingquantity);
+        PC_casingtotal = (PC_casingquantity * 2000000);
+        printf("\ntotal harga casing pc: %d \n", PC_casingtotal);
+        totalprice();
+    }
+   
+    if (PC_casingchoice > 4){
+        printf("invalid operation\n");
+        PC_casing();
+    }
+}
+
+void totalprice(){
+    printf("--------------------------------------- \n");
+    printf("Customer Name: %s\n", ordername);
+    printf("Ringkasan Pembelian \n");
+    printf("Harga total CPU         : %d \n", cputotal);
+    printf("Harga total GPU         : %d \n", gputotal);
+    printf("Harga total RAM         : %d \n", ramtotal);
+    printf("Harga total Motherboard : %d \n", motherboardtotal);
+    printf("Harga total PSU         : %d \n", psutotal);
+    printf("Harga total Monitor     : %d \n", monitortotal);
+    printf("Harga total Casing PC   : %d \n", PC_casingtotal);
+    printf("--------------------------------------- \n");
+    grand_total = cputotal + gputotal + ramtotal + motherboardtotal + psutotal + monitortotal + PC_casingtotal;
+    printf("Total harga:  %d\n\n\n\n", grand_total);
+    endsystem();
+}    
+    
+void endsystem(){
+    printf("Apakah anda ingin melanjutkan program? \n");
+    printf("1. Ya, 2. Tidak : ");
+    scanf("%d", &end_choice);
+    
+    if(end_choice == 1){
+        main();
+    }
+    
+    if(end_choice == 2){
+        printf("Terimakasih Telah Mengunjungi Gema Jaya \n");
+        
+        return;
+    }
+    
+}
